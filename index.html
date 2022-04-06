@@ -10,8 +10,8 @@
                 var interval = window.setInterval(function () {
                     // Thanks to the tag, we should only see the "Hi! 9" notification
                     var n = new Notification("Moon team says Hi! " + i++/*, {tag: 'soManyNotification'}*/);
-                    var label = document.getElementById("counter");
-                    label.setText = i + " notifications sent";
+                    var label = document.getElementById("#counter");
+                    label.textContent = i + " notifications sent";
                 }, 1000);
                 }
 
@@ -27,8 +27,8 @@
                     var interval = window.setInterval(function () {
                         // Thanks to the tag, we should only see the "Hi! 9" notification
                         var n = new Notification("Moon team says Hi! " + i++/*, {tag: 'soManyNotification'}*/);
-                        var label = document.getElementById("counter");
-                        label.setText = i + " notifications sent";
+                        var label = document.getElementById("#counter");
+                        label.textContent = i + " notifications sent";
                     }, 1000);
                     }
 
