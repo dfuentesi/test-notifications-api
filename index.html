@@ -2,18 +2,6 @@
     <head>
         <script>
             window.addEventListener('load', function () {
-            var button = document.getElementsByTagName('button')[0];
-
-            if (window.self !== window.top) {
-                // Ensure that if our document is in a frame, we get the user
-                // to first open it in its own tab or window. Otherwise, it
-                // won't be able to request permission to send notifications.
-                button.textContent = "View live result of the example code above";
-                button.addEventListener('click', () => window.open(location.href));
-                return;
-            }
-
-            button.addEventListener('click', function () {
                 // If the user agreed to get notified
                 // Let's try to send ten notifications
                 if (window.Notification && Notification.permission === "granted") {
@@ -21,11 +9,10 @@
                 // Using an interval cause some browsers (including Firefox) are blocking notifications if there are too much in a certain time.
                 var interval = window.setInterval(function () {
                     // Thanks to the tag, we should only see the "Hi! 9" notification
-                    var n = new Notification("Hi! " + i, {tag: 'soManyNotification'});
-                    if (i++ == 9) {
-                    window.clearInterval(interval);
-                    }
-                }, 200);
+                    var n = new Notification("Moon team says Hi! " + i++/*, {tag: 'soManyNotification'}*/);
+                    var label = document.getElementById("counter");
+                    label.setText = i + " notifications sent";
+                }, 1000);
                 }
 
                 // If the user hasn't told if they want to be notified or not
@@ -39,11 +26,10 @@
                     // Using an interval cause some browsers (including Firefox) are blocking notifications if there are too much in a certain time.
                     var interval = window.setInterval(function () {
                         // Thanks to the tag, we should only see the "Hi! 9" notification
-                        var n = new Notification("Hi! " + i, {tag: 'soManyNotification'});
-                        if (i++ == 9) {
-                        window.clearInterval(interval);
-                        }
-                    }, 200);
+                        var n = new Notification("Moon team says Hi! " + i++/*, {tag: 'soManyNotification'}*/);
+                        var label = document.getElementById("counter");
+                        label.setText = i + " notifications sent";
+                    }, 1000);
                     }
 
                     // Otherwise, we can fallback to a regular modal alert
@@ -59,10 +45,9 @@
                 alert("Hi!");
                 }
             });
-            });
         </script>
     </head>
     <body>
-        <button>Notify me!</button>
+        <span id="counter"></span>
     </body>
 </html>
